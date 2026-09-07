@@ -18,14 +18,14 @@ export function StepContact({ form, set, errors }: P) {
             onChange={(v) => set("salutation", v)}
             options={["Mr.", "Mrs.", "Ms.", "Dr.", "Prof."]}
           />
-          <Text label="First name" required value={form.firstName} onChange={(v) => set("firstName", v)} error={errors.firstName} placeholder="Jeevan" />
-          <Text label="Last name" required value={form.lastName} onChange={(v) => set("lastName", v)} error={errors.lastName} placeholder="Prakash" />
+          <Text label="First name" required value={form.firstName} onChange={(v) => set("firstName", v)} error={errors["firstName"]} placeholder="Jeevan" />
+          <Text label="Last name" required value={form.lastName} onChange={(v) => set("lastName", v)} error={errors["lastName"]} placeholder="Prakash" />
         </div>
       </Card>
 
       <Card title="Phone numbers" subtitle="Mobile, alternate & WhatsApp">
         <div className="space-y-4">
-          <Phone label="Mobile" required code={form.phoneCountry} onCodeChange={(v) => set("phoneCountry", v)} value={form.phone} onChange={(v) => set("phone", v)} error={errors.phone} />
+          <Phone label="Mobile" required code={form.phoneCountry} onCodeChange={(v) => set("phoneCountry", v)} value={form.phone} onChange={(v) => set("phone", v)} error={errors["phone"]} />
           <Phone label="Alternate" code={form.phoneCountry} value={form.alternatePhone} onChange={(v) => set("alternatePhone", v)} />
           <Phone label="WhatsApp" code={form.phoneCountry} value={form.sameAsMobile ? form.phone : form.whatsApp} onChange={(v) => set("whatsApp", v)} disabled={form.sameAsMobile} />
           <Switch label="Same as mobile" hint="Copy the mobile number to WhatsApp" checked={form.sameAsMobile} onChange={(v) => set("sameAsMobile", v)} />
@@ -34,7 +34,7 @@ export function StepContact({ form, set, errors }: P) {
 
       <Card title="Email addresses">
         <div className="space-y-4">
-          <Text label="Primary email" type="email" value={form.email} onChange={(v) => set("email", v)} error={errors.email} placeholder="name@email.com" />
+          <Text label="Primary email" type="email" value={form.email} onChange={(v) => set("email", v)} error={errors["email"]} placeholder="name@email.com" />
           <Text label="Secondary email" type="email" value={form.secondaryEmail} onChange={(v) => set("secondaryEmail", v)} placeholder="Optional" />
         </div>
       </Card>
@@ -126,13 +126,13 @@ export function StepPipeline({ form, set, errors }: P) {
     <div className="space-y-3">
       <Card title="Pipeline status">
         <div className="space-y-4">
-          <Select label="Lead status" required value={form.leadStatus} onChange={(v) => set("leadStatus", v)} error={errors.leadStatus} options={["New", "Contacted", "Qualified", "Proposal sent", "Negotiation", "Closed won", "Closed lost"]} />
+          <Select label="Lead status" required value={form.leadStatus} onChange={(v) => set("leadStatus", v)} error={errors["leadStatus"]} options={["New", "Contacted", "Qualified", "Proposal sent", "Negotiation", "Closed won", "Closed lost"]} />
           {form.leadStatus === "Closed lost" && (
             <Select label="Lost reason" value={form.lostReason} onChange={(v) => set("lostReason", v)} options={["Price too high", "Went to competitor", "No response", "Not interested", "Bad timing"]} />
           )}
           <Chips label="Temperature" options={["Hot", "Warm", "Cold"]} selected={form.temperature ? [form.temperature] : []} onToggle={(v) => set("temperature", form.temperature === v ? "" : v)} single />
-          <Select label="Priority" required value={form.leadPriority} onChange={(v) => set("leadPriority", v)} error={errors.leadPriority} options={["Priority 1", "Priority 2", "Priority 3"]} />
-          <Select label="Source" required value={form.leadSource} onChange={(v) => set("leadSource", v)} error={errors.leadSource} options={["Website", "Referral", "Cold call", "Social media", "Event", "Advertisement", "Walk-in"]} />
+          <Select label="Priority" required value={form.leadPriority} onChange={(v) => set("leadPriority", v)} error={errors["leadPriority"]} options={["Priority 1", "Priority 2", "Priority 3"]} />
+          <Select label="Source" required value={form.leadSource} onChange={(v) => set("leadSource", v)} error={errors["leadSource"]} options={["Website", "Referral", "Cold call", "Social media", "Event", "Advertisement", "Walk-in"]} />
           <Text label="Campaign name" value={form.campaignName} onChange={(v) => set("campaignName", v)} placeholder="Summer promo" />
         </div>
       </Card>
@@ -182,19 +182,19 @@ export function StepPipeline({ form, set, errors }: P) {
             onToggle={(v) => set("actionType", form.actionType === v ? "" : v)}
             single
           />
-          {errors.actionType && <p className="text-xs font-medium text-destructive">{errors.actionType}</p>}
+          {errors["actionType"] && <p className="text-xs font-medium text-destructive">{errors["actionType"]}</p>}
 
           {form.actionType === "Follow-up" && (
             <div className="animate-step-in space-y-4 rounded-xl border border-border bg-secondary/40 p-4">
-              <Select label="Follow-up type" value={form.followUpType} onChange={(v) => set("followUpType", v)} options={["One-time", "Weekly", "Monthly"]} error={errors.followUpType} />
-              <DateField label="Follow-up date" value={form.followUpDate} onChange={(v) => set("followUpDate", v)} error={errors.followUpDate} />
+              <Select label="Follow-up type" value={form.followUpType} onChange={(v) => set("followUpType", v)} options={["One-time", "Weekly", "Monthly"]} error={errors["followUpType"]} />
+              <DateField label="Follow-up date" value={form.followUpDate} onChange={(v) => set("followUpDate", v)} error={errors["followUpDate"]} />
               <Chips label="Method" options={["Call", "WhatsApp", "Email", "In person", "Video"]} selected={form.followUpMethod ? [form.followUpMethod] : []} onToggle={(v) => set("followUpMethod", form.followUpMethod === v ? "" : v)} single />
             </div>
           )}
           {form.actionType === "Appointment" && (
             <div className="animate-step-in space-y-4 rounded-xl border border-border bg-secondary/40 p-4">
               <Grid>
-                <DateField label="Date" value={form.appointmentDate} onChange={(v) => set("appointmentDate", v)} error={errors.appointmentDate} />
+                <DateField label="Date" value={form.appointmentDate} onChange={(v) => set("appointmentDate", v)} error={errors["appointmentDate"]} />
                 <TimeField label="Time" value={form.appointmentTime} onChange={(v) => set("appointmentTime", v)} />
               </Grid>
               <Text label="Place" value={form.appointmentAddress} onChange={(v) => set("appointmentAddress", v)} placeholder="Office, café, home visit" />
