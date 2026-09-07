@@ -7,8 +7,8 @@ export function Card({
   children,
 }: {
   title: string;
-  subtitle?: string;
-  badge?: ReactNode;
+  subtitle?: string | undefined;
+  badge?: ReactNode | undefined;
   children: ReactNode;
 }) {
   return (
@@ -25,7 +25,7 @@ export function Card({
   );
 }
 
-export function Grid({ cols = 2, children }: { cols?: 1 | 2 | 3; children: ReactNode }) {
+export function Grid({ cols = 2, children }: { cols?: 1 | 2 | 3 | undefined; children: ReactNode }) {
   const cls = cols === 3 ? "sm:grid-cols-3" : cols === 2 ? "sm:grid-cols-2" : "";
   return <div className={`grid grid-cols-1 gap-4 ${cls}`}>{children}</div>;
 }
@@ -43,11 +43,11 @@ export function Text({
   label: string;
   value: string;
   onChange: (v: string) => void;
-  placeholder?: string;
-  required?: boolean;
-  error?: string;
-  type?: string;
-  mono?: boolean;
+  placeholder?: string | undefined;
+  required?: boolean | undefined;
+  error?: string | undefined;
+  type?: string | undefined;
+  mono?: boolean | undefined;
 }) {
   return (
     <div>
@@ -79,9 +79,9 @@ export function Area({
   label: string;
   value: string;
   onChange: (v: string) => void;
-  placeholder?: string;
-  rows?: number;
-  hint?: string;
+  placeholder?: string | undefined;
+  rows?: number | undefined;
+  hint?: string | undefined;
 }) {
   return (
     <div>
@@ -111,9 +111,9 @@ export function Select({
   value: string;
   onChange: (v: string) => void;
   options: string[];
-  required?: boolean;
-  error?: string;
-  placeholder?: string;
+  required?: boolean | undefined;
+  error?: string | undefined;
+  placeholder?: string | undefined;
 }) {
   return (
     <div>
@@ -154,8 +154,8 @@ export function DateField({
   label: string;
   value: string;
   onChange: (v: string) => void;
-  required?: boolean;
-  error?: string;
+  required?: boolean | undefined;
+  error?: string | undefined;
 }) {
   return (
     <div>
@@ -209,10 +209,10 @@ export function Phone({
   value: string;
   onChange: (v: string) => void;
   code: string;
-  onCodeChange?: (v: string) => void;
-  required?: boolean;
-  error?: string;
-  disabled?: boolean;
+  onCodeChange?: ((v: string) => void) | undefined;
+  required?: boolean | undefined;
+  error?: string | undefined;
+  disabled?: boolean | undefined;
 }) {
   return (
     <div>
@@ -255,7 +255,7 @@ export function Switch({
   onChange,
 }: {
   label: string;
-  hint?: string;
+  hint?: string | undefined;
   checked: boolean;
   onChange: (v: boolean) => void;
 }) {
@@ -295,7 +295,7 @@ export function Chips({
   options: string[];
   selected: string[];
   onToggle: (v: string) => void;
-  single?: boolean;
+  single?: boolean | undefined;
 }) {
   return (
     <div>
@@ -332,7 +332,7 @@ export function Slider({
   label: string;
   value: number;
   onChange: (v: number) => void;
-  suffix?: string;
+  suffix?: string | undefined;
 }) {
   return (
     <div>
