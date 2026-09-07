@@ -1,10 +1,10 @@
 import { Area, Card, Chips, DateField, Grid, Money, Phone, Select, Slider, Switch, Text, TimeField } from "./fields";
-import type { Interest, LeadForm, Relation } from "./types";
+import type { FormErrors, Interest, LeadForm, Relation } from "./types";
 
 type P = {
   form: LeadForm;
   set: <K extends keyof LeadForm>(k: K, v: LeadForm[K]) => void;
-  errors: Record<string, string>;
+  errors: FormErrors;
 };
 
 export function StepContact({ form, set, errors }: P) {

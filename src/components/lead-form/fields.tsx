@@ -25,7 +25,7 @@ export function Card({
   );
 }
 
-export function Grid({ cols = 2, children }: { cols?: 1 | 2 | 3; children: ReactNode }) {
+export function Grid({ cols = 2, children }: { cols?: 1 | 2 | 3 | undefined; children: ReactNode }) {
   const cls = cols === 3 ? "sm:grid-cols-3" : cols === 2 ? "sm:grid-cols-2" : "";
   return <div className={`grid grid-cols-1 gap-4 ${cls}`}>{children}</div>;
 }
